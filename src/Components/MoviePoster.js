@@ -1,11 +1,12 @@
 import React from 'react'
 import '../CSS/MoviePoster.css'
 
-const MoviePoster = () => {
+const MoviePoster = ({title, posterImage, average}) => {
 	return (
-    <article className>
-      <img src alt></img>
-      <h2>title</h2>
+    <article className="movie-poster">
+      <img className="image" src={posterImage} alt></img>
+      <h3>{title}</h3>
+      <p>Average: {average}</p>
       
     </article>
 
