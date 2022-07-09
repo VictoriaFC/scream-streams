@@ -1,0 +1,7 @@
+.movies {
+  padding-right: 50px;
+  padding-left: 50px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 5px;
+}
