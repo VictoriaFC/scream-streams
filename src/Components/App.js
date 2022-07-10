@@ -7,7 +7,8 @@ class App extends Component {
 		super()
 		this.state = {
 			movies: [],
-			innerWidth: window.innerWidth
+			innerWidth: window.innerWidth, 
+			error: ''
 		}
 	}
 
@@ -18,13 +19,16 @@ class App extends Component {
     .then(data => {
       this.setState({movies: data.results})
     })
+		.catch(error => { 
+			this.setState({error: error.message})
+		})
   }
-
 
   render(){
     return(
       <main className="App">
         <h1>Dont close your eyes</h1>
+				{this.state.error && <h3>{this.state.error}</h3>}
         <Movies movies={this.state.movies} />
       </main>
     )
