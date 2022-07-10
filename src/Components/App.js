@@ -18,13 +18,14 @@ class App extends Component {
 	}
 
   handleChange = (id) => {
-    const selectedPoster = this.state.movies.find(movie => {
-      return movie.id === id
-    })
     if(this.state.displaySelected){
       this.setState({displaySelected: false})
     }else{
-      this.setState({selectedMovie: selectedPoster, displaySelected: true})
+      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=44887bea2881cacd3e7aa9c9a1e39222`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({selectedMovie: data, displaySelected: true})
+      })
     }
   }
 
@@ -42,13 +43,8 @@ class App extends Component {
   renderMoviePreview() {
     return (
       <MoviePreview 
-        title={this.state.selectedMovie.title}
-        overview={this.state.selectedMovie.overview}
-        average={this.state.selectedMovie.vote_average}
-        votes={this.state.selectedMovie.vote_count}
-        releaseDate={this.state.selectedMovie.release_date}
+        movieData={this.state.selectedMovie}
         handleChange={this.handleChange}
-        posterImage={`https://image.tmdb.org/t/p/original${this.state.selectedMovie.poster_path}`}
       />
     )
   }
