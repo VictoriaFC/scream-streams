@@ -1,3 +1,43 @@
-.preview-container {
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.preview-container:before {
+	position: absolute;
 	border: 2px solid black;
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+  background-repeat: no-repeat;  
+}
+
+.preview-container {
+	border: solid;
+	display: flex;
+	flex-direction: row;
+	background-size: cover;
+}
+
+.preview {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-image: linear-gradient(to right,
+	rgba(199.5, 220.5, 220.5, .75) 150px, rgba(199.5, 220.5, 220.5, 0.75) 100%);
+}
+
+
+.display-left {
+	width: 30%;
+	border: solid;
+}
+
+.display-right {
+	width: 70%;
+	border: solid;
+}
+
+.movie-image {
+	width: 100%;
 }
