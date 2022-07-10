@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import '../CSS/App.css'
 import Movies from './Movies'
 import MoviePreview from './MoviePreview'
+import Nav from './Nav'
+import Header from './Header'
+import Footer from './Footer'
 import MoviePoster from './MoviePoster'
 
 class App extends Component {
@@ -52,16 +55,19 @@ class App extends Component {
   render(){
     return(
       <main className="App">
-        <h1>Dont close your eyes</h1>
+				<Nav />
+				<Header />
+        {/* <h1>Dont close your eyes</h1> */}
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <h2>Loading</h2>}
         { this.state.displaySelected ? 
           this.renderMoviePreview() :
           <Movies movies={this.state.movies} handleChange={this.handleChange}  />
         }
+			<Footer />
       </main>
     )
-  }
+  }	
 }
 
 export default App
