@@ -1,7 +1,8 @@
 .movies {
-  padding-right: 50px;
-  padding-left: 50px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(auto-fit, 200px);
   grid-gap: 5px;
+	justify-content: center;
+	grid-column-gap: 1rem;
 }

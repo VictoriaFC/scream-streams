@@ -4,7 +4,7 @@ import '../CSS/MoviePoster.css'
 const MoviePoster = ({title, posterImage, average}) => {
 	return (
     <article className="movie-poster">
-      <img className="image" src={posterImage} alt></img>
+      <img className="image" src={posterImage} alt={title}></img>
       <h3>{title}</h3>
       <p>Average: {average}</p>
       
