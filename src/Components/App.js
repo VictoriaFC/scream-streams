@@ -8,7 +8,8 @@ class App extends Component {
 		this.state = {
 			movies: [],
 			innerWidth: window.innerWidth, 
-			error: ''
+			error: '',
+      isLoading: true
 		}
 	}
 
@@ -17,7 +18,7 @@ class App extends Component {
     fetch("https://api.themoviedb.org/3/discover/movie?api_key=44887bea2881cacd3e7aa9c9a1e39222&with_genres=27")
     .then(response => response.json())
     .then(data => {
-      this.setState({movies: data.results})
+      this.setState({movies: data.results, isLoading: false,})
     })
 		.catch(error => { 
 			this.setState({error: error.message})
@@ -29,6 +30,7 @@ class App extends Component {
       <main className="App">
         <h1>Dont close your eyes</h1>
 				{this.state.error && <h3>{this.state.error}</h3>}
+        {this.state.isLoading && <h2>Loading</h2>}
         <Movies movies={this.state.movies} />
       </main>
     )
