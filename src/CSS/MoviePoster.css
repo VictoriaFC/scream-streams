@@ -11,3 +11,7 @@
   height: 40vh;
   border-radius: 10px;
 }
+
+.image:hover {
+	transform: scale(1.1); 
+}

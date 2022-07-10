@@ -5,7 +5,7 @@
 
 .preview-container:before {
 	position: absolute;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	width: 100vw;
 	height: 100vh;
 	background-position: center;
@@ -13,7 +13,7 @@
 }
 
 .preview-container {
-	border: solid;
+	/* border: solid; */
 	display: flex;
 	flex-direction: row;
 	background-size: cover;
@@ -30,14 +30,16 @@
 
 .display-left {
 	width: 30%;
-	border: solid;
+	/* border: solid; */
 }
 
 .display-right {
 	width: 70%;
-	border: solid;
+	/* border: solid; */
 }
 
 .movie-image {
-	width: 100%;
+	width: 90%;
+	margin: 30px;
+	border-radius: 10px;
 }
