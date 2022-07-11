@@ -1,14 +1,24 @@
 import React from 'react'
 import '../CSS/MoviePreview.css'
 
-const MoviePreview = ({ title, overview, posterImage, votes, releaseDate, average, handleChange}) => {
+const MoviePreview = ({ movieData, handleChange }) => {
 	return (
-    <article onClick={() => handleChange(title)}>
-      <h2>{title}</h2>
-      <img className="image" src={posterImage} alt={title}></img>
-      <h3>{title}</h3>
-      <p>Average: {average}</p>
-    </article>
+		<main className="preview-container" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.backdrop_path})`}}>
+			<div className="preview">
+				<article className="display-left" onClick={() => handleChange(movieData.title)}>
+					<img className="movie-image" src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`} alt={movieData.title}></img>
+				</article>
+				<article className="display-right">
+					<h2 className="movie-title">{movieData.title}</h2>
+					<p className="runtime">{movieData.runtime} runtime</p>
+					<p className="movie-genres">{movieData.genres[0].name}</p>
+					<p className="movie-info">Average: {movieData.vote_average}</p><br></br>
+					<h4 className="tagline"><i>{movieData.tagline}</i></h4><br></br>
+					<p className="overview"> <b>Overview:</b><br></br> {movieData.overview}</p>
+					<button onClick={() => handleChange(movieData.id)} className="back-button">Back to Main</button>
+				</article>
+			</div>
+		</main>
 
 	)
 }
