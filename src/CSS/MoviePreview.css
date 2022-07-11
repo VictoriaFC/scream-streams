@@ -43,3 +43,9 @@
 	margin: 30px;
 	border-radius: 10px;
 }
+
+.back-button:hover {
+	background-color: #98231C;
+	border: solid #98231C;
+	border-radius: 2px;
+}

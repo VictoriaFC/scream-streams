@@ -14,7 +14,7 @@ const MoviePreview = ({ movieData, handleChange }) => {
 					<p className="movie-info">Average: {movieData.vote_average}</p><br></br>
 					<h4 className="tagline"><i>{movieData.tagline}</i></h4><br></br>
 					<p className="overview"> <b>Overview:</b><br></br> {movieData.overview}</p>
-
+					<button onClick={() => handleChange(movieData.id)} className="back-button">Back to Main</button>
 				</article>
 			</div>
 		</main>
