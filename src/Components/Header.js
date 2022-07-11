@@ -5,9 +5,8 @@ import background from '../assets/header-background.jpeg'
 const Header = () => {
 	return (
 		<div className="header-container" style={{backgroundImage: `url('https://data.whicdn.com/images/360077678/original.gif')`}}>
-			<h2 className="header-welcome">Welcome Horror Movie Lovers</h2>
-			<p className="header-message">Walls have ears. Doors have eyes. Trees have voices. Beasts tell lies. Beware the rain. Beware the snow. Beware the man you think you know.</p>
-
+			<h2 className="header-welcome"><b>WELCOME TO SCREAM STREAMS</b></h2><br></br>
+			<p className="header-message"><b>Walls have ears. Doors have eyes. Trees have voices. Beasts tell lies. Beware the rain. Beware the snow. Beware the man you think you know.</b></p>
 		</div>
 	)
 }

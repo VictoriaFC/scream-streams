@@ -10,6 +10,7 @@ const MoviePreview = ({ movieData, handleChange }) => {
 				</article>
 				<article className="display-right">
 					<h2 className="movie-title">{movieData.title}</h2>
+					<p className="runtime">{movieData.runtime} runtime</p>
 					<p className="movie-genres">{movieData.genres[0].name}</p>
 					<p className="movie-info">Average: {movieData.vote_average}</p><br></br>
 					<h4 className="tagline"><i>{movieData.tagline}</i></h4><br></br>
