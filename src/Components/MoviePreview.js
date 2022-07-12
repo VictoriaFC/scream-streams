@@ -1,26 +1,55 @@
 import React from 'react'
 import '../CSS/MoviePreview.css'
+import { Link } from "react-router-dom"
+import loadingGif from '../assets/loading.gif'
 
-const MoviePreview = ({ movieData, handleChange }) => {
-	return (
-		<main className="preview-container" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.backdrop_path})`}}>
-			<div className="preview">
-				<article className="display-left" onClick={() => handleChange(movieData.title)}>
-					<img className="movie-image" src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`} alt={movieData.title}></img>
-				</article>
-				<article className="display-right">
-					<h2 className="movie-title">{movieData.title}</h2>
-					<p className="runtime">{movieData.runtime} runtime</p>
-					<p className="movie-genres">{movieData.genres[0].name}</p>
-					<p className="movie-info">Average: {movieData.vote_average}</p><br></br>
-					<h4 className="tagline"><i>{movieData.tagline}</i></h4><br></br>
-					<p className="overview"> <b>Overview:</b><br></br> {movieData.overview}</p>
-					<button onClick={() => handleChange(movieData.id)} className="back-button">Back to Main</button>
-				</article>
-			</div>
-		</main>
 
-	)
+
+class MoviePreview extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      movie: {},
+      isLoading: true
+    }
+  }
+
+  componentDidMount() {
+    fetch(`https://api.themoviedb.org/3/movie/${this.props.id}?api_key=44887bea2881cacd3e7aa9c9a1e39222`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({movie: data, isLoading: false})
+      })
+  }
+
+  render() {
+    const movie = this.state.movie
+    return (
+      <div>
+        {this.state.isLoading ? <img className="loading-gif" src={loadingGif}/> : 
+          <main className="preview-container" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
+            <div className="preview">
+              <article className="display-left">
+                <img className="movie-image" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title}></img>
+              </article>
+              <article className="display-right">
+                <h2 className="movie-title">{movie.title}</h2>
+                <p className="runtime">{movie.runtime} runtime</p>
+                <p className="movie-genres">{movie.genres[0].name}</p>
+                <p className="movie-info">Average: {movie.vote_average}</p><br></br>
+                <h4 className="tagline"><i>{movie.tagline}</i></h4><br></br>
+                <p className="overview"> <b>Overview:</b><br></br> {movie.overview}</p>
+                <Link to="/" type="button">
+                  <button className="back-button">Back to Main</button>
+                </Link>
+              </article>
+            </div>
+          </main>
+        }
+
+      </div>
+    )
+  }
 }
 
 export default MoviePreview
