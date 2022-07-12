@@ -3,9 +3,16 @@ import '../CSS/App.css'
 import Movies from './Movies'
 import MoviePreview from './MoviePreview'
 import Nav from './Nav'
+import Login from './Login'
+import Logout from './Logout'
+import Favorites from './Favorites'
+import Signup from './Signup'
 import Header from './Header'
 import Footer from './Footer'
 import loadingGif from '../assets/loading.gif'
+import { Route, Switch } from 'react-router-dom';
+
+
 
 class App extends Component {
 	constructor() {
@@ -14,23 +21,9 @@ class App extends Component {
 			movies: [],
 			innerWidth: window.innerWidth, 
 			error: '',
-      isLoading: true,
-      selectedMovie: "",
-      displaySelected: false,
+      isLoading: true
 		}
 	}
-
-  handleChange = (id) => {
-    if(this.state.displaySelected){
-      this.setState({displaySelected: false})
-    }else{
-      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=44887bea2881cacd3e7aa9c9a1e39222`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({selectedMovie: data, displaySelected: true})
-      })
-    }
-  }
 
   componentDidMount(){
     fetch("https://api.themoviedb.org/3/discover/movie?api_key=44887bea2881cacd3e7aa9c9a1e39222&with_genres=27")
@@ -43,27 +36,33 @@ class App extends Component {
 		})
   }
 
-  renderMoviePreview() {
-    return (
-      <MoviePreview 
-        movieData={this.state.selectedMovie}
-        handleChange={this.handleChange}
-      />
-    )
-  }
-
   render(){
     return(
       <main className="App">
 				<Nav />
-				<Header />
-        {/* <h1>Dont close your eyes</h1> */}
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
-        { this.state.displaySelected ? 
-          this.renderMoviePreview() :
-          <Movies movies={this.state.movies} handleChange={this.handleChange}  />
-        }
+        <Switch>
+          <Route exact path="/">
+				    <Header />
+            <Movies movies={this.state.movies} />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/Logout">
+            <Logout />
+          </Route>
+          <Route exact path="/Signup">
+            <Signup />
+          </Route>
+          <Route exact path="/Favorites">
+            <Favorites movies={this.state.movies} />
+          </Route>
+          <Route exact path="/MoviePreview/:movie_id">
+            <MoviePreview />
+          </Route>
+        </Switch>
 			<Footer />
       </main>
     )

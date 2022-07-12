@@ -1,22 +1,33 @@
 import React from 'react'
 import '../CSS/Nav.css'
+import { Link } from "react-router-dom"
+
 
 const Nav = () => {
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
-				<button className="button">Favorites</button>
+        <Link to="/Favorites">
+				  <button className="button">Favorites</button>
+        </Link>
 				<select className="button">
-					<option value="sort">Sort</option>
+					<option value="sort">Sort By</option>
 					<option value="sort-low-high">lowest to highest ratings</option>
 					<option value="sort-high-low">highest to lowest ratings</option>
-					<option value="sort-new-old">newest to oldest ratings</option>
-					<option value="sort-old-new">oldest to newest ratings</option>
+					<option value="sort-new-old">newest release date</option>
+					<option value="sort-old-new">oldest release date</option>
 				</select>
 			</div>
 			<div className="nav-right">
-				<button className="login-button">Login</button>
-				<button className="signup-button">Sign Up</button>
+        <Link to="/Login">
+				  <button className="login-button">Login</button>
+        </Link>
+        <Link to="/Logout">
+				  <button className="login-button">Logout</button>
+        </Link>
+        <Link to="/SignUp">
+				  <button className="signup-button">Sign Up</button>
+        </Link>
 			</div>
 		</nav>
 	)
