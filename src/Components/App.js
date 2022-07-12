@@ -3,6 +3,10 @@ import '../CSS/App.css'
 import Movies from './Movies'
 import MoviePreview from './MoviePreview'
 import Nav from './Nav'
+import Login from './Login'
+import Logout from './Logout'
+import Favorites from './Favorites'
+import Signup from './Signup'
 import Header from './Header'
 import Footer from './Footer'
 import loadingGif from '../assets/loading.gif'
@@ -32,33 +36,32 @@ class App extends Component {
 		})
   }
 
-  renderMoviePreview(movie) {
-    return (
-      <MoviePreview 
-        id={movie.id}
-        backdropPath={movie.backdrop_path}
-        title={movie.title}
-        posterPath={movie.poster_path}
-        runtime={movie.runtime}
-        genres={movie?.genres?.length ? movie.genres[0].name : ""}
-        voteAverage={movie.vote_average}
-        tagline={movie.tagline}
-        overview={movie.overview}
-        handleChange={this.handleChange}
-      />
-    )
-  }
-
   render(){
     return(
       <main className="App">
 				<Nav />
-				<Header />
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
         <Switch>
-          <Route exact path="/" render={() => <Movies movies={this.state.movies} />}/>
-          <Route path="/MoviePreview/:id" render={({ match }) => <MoviePreview id={parseInt(match.params.id)} />}/>
+          <Route exact path="/">
+				    <Header />
+            <Movies movies={this.state.movies} />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/Logout">
+            <Logout />
+          </Route>
+          <Route exact path="/Signup">
+            <Signup />
+          </Route>
+          <Route exact path="/Favorites">
+            <Favorites movies={this.state.movies} />
+          </Route>
+          <Route exact path="/MoviePreview/:movie_id">
+            <MoviePreview />
+          </Route>
         </Switch>
 			<Footer />
       </main>

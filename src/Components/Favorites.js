@@ -1,10 +1,12 @@
 import React from 'react'
 import '../CSS/Movies.css'
 import MoviePoster from './MoviePoster'
-import { withRouter } from 'react-router'
+import { Link } from "react-router-dom"
+
 
 const Movies = (props) => {
-  const movieData = props.movies.map(movie => {
+  const movies = props.movies.filter(movie => movie.favorite )
+  const movieData = movies.map(movie => {
     return (<MoviePoster
     id={movie.id}
     title={movie.title}
@@ -18,9 +20,16 @@ const Movies = (props) => {
   })
 	return (
     <div className="movies">
-      {movieData}
+      {movieData.length ? movieData :
+      <div>
+        <h2>No Favorites</h2>
+        <Link to="/" type="button">
+          <button className="back-button">Back to Main</button>
+        </Link>
+      </div>
+      }
     </div>
 	)
 }
 
-export default withRouter(Movies) 
+export default Movies 
