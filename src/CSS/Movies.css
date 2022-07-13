@@ -2,7 +2,7 @@
 	background-color: rgb(31, 14, 14);
 	color: #B5AC99;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(6, 1fr);
 	grid-template-columns: repeat(auto-fit, 200px);
   grid-gap: 35px;
 	justify-content: center;

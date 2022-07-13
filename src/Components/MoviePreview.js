@@ -26,23 +26,25 @@ class MoviePreview extends React.Component {
 
   render() {
     const movie = this.state.movie
+		const { title, runtime, genres, vote_average, tagline, overview, poster_path, backdrop_path, id } = movie
     return (
       <div>
         {this.state.isLoading ? <img className="loading-gif" src={loadingGif}/> : 
-          <section className="preview-container" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
+          <section className="preview-container" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`}}>
             <div className="preview">
               <article className="display-left">
-                <img className="movie-image" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title}></img>
+                <img className="movie-image" src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title}></img>
               </article>
               <article className="display-right">
-                <h2 className="movie-title">{movie.title}</h2>
-                <p className="runtime">{movie.runtime} runtime</p>
-                <p className="movie-genres">{movie.genres[0].name}</p>
-                <p className="movie-info">Average: {movie.vote_average}</p><br></br>
-                <h4 className="tagline"><i>{movie.tagline}</i></h4><br></br>
-                <p className="overview"> <b>Overview:</b><br></br> {movie.overview}</p>
+                <h2 className="movie-title">{title}</h2>
+                <p className="movie-runtime">Runtime: {runtime} minutes</p>
+                <p className="movie-genres">{genres[0].name}</p>
+                <p className="movie-info">Average: {vote_average}</p><br></br>
+                <h4 className="movie-tagline">{tagline}</h4><br></br>
+								<h2 className="overview-header">Overview:</h2>
+                <p className="movie-overview">{overview}</p>
                 <Link to="/" type="button">
-                  <button className="back-button">Back to Main</button>
+                  <button className="back-button">Back to Main 💀</button>
                 </Link>
               </article>
             </div>
