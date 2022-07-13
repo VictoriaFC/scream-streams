@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 
 const MoviePoster = ({id, title, posterImage, average}) => {
 	return (
-    <article className="movie-poster">
+    <article className="movie-poster-container">
       <Link className="movie-poster" to={`/MoviePreview/${id}`} >
-        <img className="image" src={posterImage} alt={title}></img>
+        <img className="movie-poster-image" src={posterImage} alt={title}></img>
       </Link>
-      <h3 className="movie-title">{title}</h3>
-      <p className="movie-rating"><b>Rating: {average}</b></p>
+			<p className="movie-rating-main"><b>{average}%</b></p>
+			<h3 className="movie-title-main">{title}</h3>
     </article>
 	)
 }
