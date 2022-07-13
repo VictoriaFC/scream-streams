@@ -39,7 +39,7 @@ class MoviePreview extends React.Component {
                 <h2 className="movie-title">{title}</h2>
                 <p className="movie-runtime">Runtime: {runtime} minutes</p>
                 <p className="movie-genres">{genres[0].name}</p>
-                <p className="movie-info">Average: {vote_average}</p><br></br>
+                <p className="movie-info">Average: {vote_average * 10}%</p><br></br>
                 <h4 className="movie-tagline">{tagline}</h4><br></br>
 								<h2 className="overview-header">Overview:</h2>
                 <p className="movie-overview">{overview}</p>

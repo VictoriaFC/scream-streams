@@ -8,7 +8,7 @@ const MoviePoster = ({id, title, posterImage, average}) => {
       <Link className="movie-poster" to={`/MoviePreview/${id}`} >
         <img className="movie-poster-image" src={posterImage} alt={title}></img>
       </Link>
-			<p className="movie-rating-main"><b>{average}%</b></p>
+			<p className="movie-rating-main"><b>{average * 10}%</b></p>
 			<h3 className="movie-title-main">{title}</h3>
     </article>
 	)
