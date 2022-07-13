@@ -9,6 +9,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+  background-image: url('https://data.whicdn.com/images/360077678/original.gif');
 }
 
 .header-welcome,
