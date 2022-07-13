@@ -17,7 +17,7 @@ const Movies = (props) => {
     />)
   })
 	return (
-    <div className="movies">
+    <div className="movies-container">
       {movieData}
     </div>
 	)

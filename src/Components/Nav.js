@@ -6,8 +6,8 @@ import { Link } from "react-router-dom"
 const Nav = () => {
 	return (
 		<nav className="nav-container">
-			<div className="nav-left">
-        <Link to="/Favorites">
+			{/* <div className="nav-left">
+        <Link to="/Favorites" className="favorite-button">
 				  <button className="button">Favorites</button>
         </Link>
 				<select className="button">
@@ -28,7 +28,7 @@ const Nav = () => {
         <Link to="/SignUp">
 				  <button className="signup-button">Sign Up</button>
         </Link>
-			</div>
+			</div> */}
 		</nav>
 	)
 }

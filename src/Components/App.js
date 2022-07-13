@@ -47,18 +47,18 @@ class App extends Component {
 				    <Header />
             <Movies movies={this.state.movies} />
           </Route>
-          <Route exact path="/Login">
+          {/* <Route exact path="/Login">
             <Login />
-          </Route>
-          <Route exact path="/Logout">
+          </Route> */}
+          {/* <Route exact path="/Logout">
             <Logout />
           </Route>
           <Route exact path="/Signup">
             <Signup />
-          </Route>
-          <Route exact path="/Favorites">
+          </Route> */}
+          {/* <Route exact path="/Favorites">
             <Favorites movies={this.state.movies} />
-          </Route>
+          </Route> */}
           <Route exact path="/MoviePreview/:movie_id">
             <MoviePreview />
           </Route>
