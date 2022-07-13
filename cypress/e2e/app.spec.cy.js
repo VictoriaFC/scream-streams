@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 
 describe("App Dashboard", () => {
   
@@ -5,10 +6,10 @@ describe("App Dashboard", () => {
     cy.visit("http://localhost:3000")
   })
 
-  it("should have a favorites button", () => {
-    cy.get(".favorite-button")
-    .contains("Favorites")
-  })
+  // it("should have a favorites button", () => {
+  //   cy.get(".favorite-button")
+  //   .contains("Favorites")
+  // })
 
   it("should load header with welcome message with creepy quote below it", () => {
     cy.contains("WELCOME TO SCREAM STREAMS")
@@ -24,4 +25,8 @@ describe("App Dashboard", () => {
       .get("p").should("have.class", "movie-rating")
   })
 
+  it("should be able to click movie poster and open movie preview page", () => {
+    cy.get(".image").first().should("have.attr", "alt", "Shark Bait").click()
+    .url().should("include", "/MoviePreview")
+  })
 })
