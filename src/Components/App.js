@@ -12,6 +12,10 @@ import Footer from './Footer'
 import loadingGif from '../assets/loading.gif'
 import { Route, Switch } from 'react-router-dom';
 
+// pages
+import Consent from './Consent'
+import { Redirect } from 'react-router-dom'
+
 
 
 class App extends Component {
@@ -21,7 +25,8 @@ class App extends Component {
 			movies: [],
 			innerWidth: window.innerWidth, 
 			error: '',
-      isLoading: true
+      isLoading: true,
+      isOfAge: false
 		}
 	}
 
@@ -36,16 +41,24 @@ class App extends Component {
 		})
   }
 
+  userDidConsent = () => {
+    return this.setState({ isOfAge: true })
+  }
+
   render(){
     return(
       <main className="App">
 				<Nav />
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
+        {!this.state.isOfAge && <Redirect to="/Consent" />}
         <Switch>
           <Route exact path="/">
-				    <Header />
+            <Header />
             <Movies movies={this.state.movies} />
+          </Route>
+          <Route exact path="/Consent">
+            <Consent consent={this.userDidConsent}/>
           </Route>
           {/* <Route exact path="/Login">
             <Login />
