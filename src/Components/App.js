@@ -55,20 +55,14 @@ class App extends Component {
 	
   componentDidMount(){
 		this.getStateFromSessionStorage();
-    if(sessionStorage.token) {
-      fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies", {
-        headers: {
-          "Authorization": `Bearer ${sessionStorage.token}`
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({movies: data.results, isLoading: false,})
-      })
-      .catch(error => { 
-        this.setState({error: error.message})
-      })
-    }
+		fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies")
+		.then(response => response.json())
+		.then(data => {
+			this.setState({movies: data.results, isLoading: false,})
+		})
+		.catch(error => { 
+			this.setState({error: error.message})
+		})
   }
 
   userDidConsent = () => {
@@ -126,7 +120,7 @@ class App extends Component {
             }
           </Route>
           <Route exact path="/Signup">
-            <Signup />
+            <Signup consent={this.userDidConsent}/>
           </Route>
           <Route exact path="/Favorites">
             <Favorites movies={this.state.movies} />

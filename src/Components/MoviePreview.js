@@ -17,7 +17,7 @@ class MoviePreview extends React.Component {
 
   componentDidMount() {
     const id = this.props.match.params.movie_id;
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=44887bea2881cacd3e7aa9c9a1e39222`)
+    fetch(`https://foxc-movies-api.herokuapp.com/api/v1/movies/${id}`)
       .then(response => response.json())
       .then(data => {
         this.setState({movie: data, isLoading: false})
