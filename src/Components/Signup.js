@@ -34,6 +34,7 @@ class Signup extends Component {
 			sessionStorage.setItem("token", data.token)
 			sessionStorage.setItem("isOfAge", true)
 			this.setState({token: data.token})
+			this.props.consent()
 		}).catch(err => console.log(err.message));
 	}
 
