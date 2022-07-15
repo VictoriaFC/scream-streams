@@ -31,19 +31,19 @@ class Signup extends Component {
 				}
 			})
 		}).then(response => response.json()).then(data => {
-			localStorage.setItem("token", data.token)
-			localStorage.setItem("isOfAge", true)
+			sessionStorage.setItem("token", data.token)
+			sessionStorage.setItem("isOfAge", true)
 			this.setState({token: data.token})
 		}).catch(err => console.log(err.message));
 	}
 
 	createName = (event) => {
-		localStorage.setItem("name", event.target.value)
+		sessionStorage.setItem("name", event.target.value)
 		this.setState({name: event.target.value})
 	}
 
 	createEmail = (event) => {
-		localStorage.setItem("email", event.target.value)
+		sessionStorage.setItem("email", event.target.value)
 		this.setState({email: event.target.value})
 	}
 
