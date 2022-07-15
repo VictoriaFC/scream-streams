@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import '../CSS/App.css'
 import loadingGif from '../assets/loading.gif'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import { encode } from 'base-64'
+
 
 // styling components
 import Nav from './Nav'
@@ -14,7 +16,6 @@ import Consent from './Consent'
 import Movies from './Movies'
 import MoviePreview from './MoviePreview'
 import Login from './Login'
-import Logout from './Logout'
 import Favorites from './Favorites'
 import Signup from './Signup'
 
@@ -32,10 +33,10 @@ class App extends Component {
 		}
 	}
 
-	getStateFromLocalStorage() {
-		let token = localStorage.getItem("token")
-		let email = localStorage.getItem("email")
-		let firstName = localStorage.getItem("name")
+	getStateFromSessionStorage() {
+		let token = sessionStorage.getItem("token")
+		let email = sessionStorage.getItem("email")
+		let firstName = sessionStorage.getItem("name")
 		if(token) {
 			this.setState({
 				token: token,
@@ -48,33 +49,68 @@ class App extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if(prevState.token !== this.state.token) {
-			this.getStateFromLocalStorage()
+			this.getStateFromSessionStorage()
 		}
 	}
 	
   componentDidMount(){
-		this.getStateFromLocalStorage();
-    fetch("https://api.themoviedb.org/3/discover/movie?api_key=44887bea2881cacd3e7aa9c9a1e39222&with_genres=27")
-    .then(response => response.json())
-    .then(data => {
-      this.setState({movies: data.results, isLoading: false,})
-    })
-		.catch(error => { 
-			this.setState({error: error.message})
-		})
+		this.getStateFromSessionStorage();
+    if(sessionStorage.token) {
+      fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies", {
+        headers: {
+          "Authorization": `Bearer ${sessionStorage.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({movies: data.results, isLoading: false,})
+      })
+      .catch(error => { 
+        this.setState({error: error.message})
+      })
+    }
   }
 
   userDidConsent = () => {
+    sessionStorage.setItem("isOfAge", true)
     return this.setState({ isOfAge: true })
+  }
+
+  userLogout = (event) => {
+    event.preventDefault()
+    sessionStorage.clear()
+    sessionStorage.setItem("isOfAge", true)
+    return this.setState({ token: "", email: "", name: ""})
+  }
+
+  userLogin = (event) => {
+    event.preventDefault()
+    let email = event.target.parentElement.querySelector("#email").value
+    let password = event.target.parentElement.querySelector("#password").value
+    let token = `${email}:${password}`
+    let basicToken = encode(token)
+    fetch('https://foxc-movies-api.herokuapp.com/api/v1/api-keys', {
+      method: "POST",
+      headers: {
+        "Authorization": `basic ${basicToken}`
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      sessionStorage.setItem("token", data.token)
+      sessionStorage.setItem("email", data.email)
+      sessionStorage.setItem("name", data.name)
+      this.setState({token: data.token, email: data.email, name: data.first_name})
+    }).catch(err => alert("Something went wrong"))
   }
 
   render(){
     return(
       <main className="App">
-				<Nav />
+				{!!sessionStorage.isOfAge && <Nav userLogout={this.userLogout}/>}
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
-        {localStorage.getItem("isOfAge") !== "true" && <Redirect to="/Consent" />}
+        {sessionStorage.getItem("isOfAge") !== "true" && <Redirect to="/Consent" />}
         <Switch>
           <Route exact path="/">
             <Header />
@@ -84,10 +120,9 @@ class App extends Component {
             <Consent consent={this.userDidConsent}/>
           </Route>
           <Route exact path="/Login">
-            <Login />
-          </Route>
-          <Route exact path="/Logout">
-            <Logout />
+            {!!this.state.token ? <Redirect to="/" /> :
+              <Login userLogin={this.userLogin}/>
+            }
           </Route>
           <Route exact path="/Signup">
             <Signup />

@@ -31,19 +31,19 @@ class Signup extends Component {
 				}
 			})
 		}).then(response => response.json()).then(data => {
-			localStorage.setItem("token", data.token)
-			localStorage.setItem("isOfAge", true)
+			sessionStorage.setItem("token", data.token)
+			sessionStorage.setItem("isOfAge", true)
 			this.setState({token: data.token})
 		}).catch(err => console.log(err.message));
 	}
 
 	createName = (event) => {
-		localStorage.setItem("name", event.target.value)
+		sessionStorage.setItem("name", event.target.value)
 		this.setState({name: event.target.value})
 	}
 
 	createEmail = (event) => {
-		localStorage.setItem("email", event.target.value)
+		sessionStorage.setItem("email", event.target.value)
 		this.setState({email: event.target.value})
 	}
 
@@ -58,13 +58,13 @@ class Signup extends Component {
 				<h2>Signup</h2>
 				<form className="signup-form" onSubmit={(event) => this.postUserInfo(event)}>
 					<label> Name:
-						<input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)}/>
+						<input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)} required/>
 					</label>
 					<label> Email:
-						<input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)}/>
+						<input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)} required/>
 					</label>
 					<label> Password:
-						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)}/>
+						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)} required/>
 					</label>
 					<input type="submit" value="Create Account" />
 				</form>
