@@ -3,7 +3,7 @@ import '../CSS/Nav.css'
 import { Link } from "react-router-dom"
 
 
-const Nav = () => {
+const Nav = ({ userLogout }) => {
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
@@ -20,9 +20,7 @@ const Nav = () => {
         </Link>
 			}
 			{!!localStorage.getItem("token") &&
-        <Link to="/Logout">
-				  <button className="login-button">Logout</button>
-        </Link>
+				<button className="logout-button" onClick={(event) => userLogout(event)}>Logout</button>
 			}
 			{!localStorage.getItem("token") &&
         <Link to="/SignUp">

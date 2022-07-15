@@ -14,7 +14,6 @@ import Consent from './Consent'
 import Movies from './Movies'
 import MoviePreview from './MoviePreview'
 import Login from './Login'
-import Logout from './Logout'
 import Favorites from './Favorites'
 import Signup from './Signup'
 
@@ -68,10 +67,17 @@ class App extends Component {
     return this.setState({ isOfAge: true })
   }
 
+  userLogout = (event) => {
+    event.preventDefault()
+    localStorage.clear()
+    localStorage.setItem("isOfAge", true)
+    return this.setState({ token: "", email: "", name: ""})
+  }
+
   render(){
     return(
       <main className="App">
-				<Nav />
+				<Nav userLogout={this.userLogout}/>
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
         {localStorage.getItem("isOfAge") !== "true" && <Redirect to="/Consent" />}
@@ -85,9 +91,6 @@ class App extends Component {
           </Route>
           <Route exact path="/Login">
             <Login />
-          </Route>
-          <Route exact path="/Logout">
-            <Logout />
           </Route>
           <Route exact path="/Signup">
             <Signup />

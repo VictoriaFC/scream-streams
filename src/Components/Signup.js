@@ -58,13 +58,13 @@ class Signup extends Component {
 				<h2>Signup</h2>
 				<form className="signup-form" onSubmit={(event) => this.postUserInfo(event)}>
 					<label> Name:
-						<input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)}/>
+						<input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)} required/>
 					</label>
 					<label> Email:
-						<input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)}/>
+						<input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)} required/>
 					</label>
 					<label> Password:
-						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)}/>
+						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)} required/>
 					</label>
 					<input type="submit" value="Create Account" />
 				</form>
