@@ -55,15 +55,20 @@ class App extends Component {
 	
   componentDidMount(){
 		this.getStateFromSessionStorage();
-    
-    fetch("https://api.themoviedb.org/3/discover/movie?api_key=44887bea2881cacd3e7aa9c9a1e39222&with_genres=27")
-    .then(response => response.json())
-    .then(data => {
-      this.setState({movies: data.results, isLoading: false,})
-    })
-		.catch(error => { 
-			this.setState({error: error.message})
-		})
+    if(sessionStorage.token) {
+      fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies", {
+        headers: {
+          "Authorization": `Bearer ${sessionStorage.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({movies: data.results, isLoading: false,})
+      })
+      .catch(error => { 
+        this.setState({error: error.message})
+      })
+    }
   }
 
   userDidConsent = () => {
