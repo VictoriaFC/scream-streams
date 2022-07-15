@@ -66,7 +66,7 @@ class Signup extends Component {
 					<label> Password:
 						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)}/>
 					</label>
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Create Account" />
 				</form>
 				<Link to="/" type="button">
 					<button className="back-button">Back to Main</button>
