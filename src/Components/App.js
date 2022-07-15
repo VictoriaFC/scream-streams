@@ -92,6 +92,7 @@ class App extends Component {
     fetch('https://foxc-movies-api.herokuapp.com/api/v1/api-keys', {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         "Authorization": `basic ${basicToken}`
       }
     })
