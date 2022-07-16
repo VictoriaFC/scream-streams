@@ -32,7 +32,7 @@ class App extends Component {
 			token: ""
 		}
 	}
-
+//session storage is unique to the tab- it is cleared when you close the tab.  Session data isnt shared between tabs.
 	getStateFromSessionStorage() {
 		let token = sessionStorage.getItem("token")
 		let email = sessionStorage.getItem("email")
@@ -81,13 +81,13 @@ class App extends Component {
     event.preventDefault()
     let email = event.target.parentElement.querySelector("#email").value
     let password = event.target.parentElement.querySelector("#password").value
-    let token = `${email}:${password}`
-    let basicToken = encode(token)
+    let token = `${email}:${password}` // sends info to backend to be verified
+    let basicToken = encode(token) // base 64 encrypted string for security
     fetch('https://foxc-movies-api.herokuapp.com/api/v1/api-keys', {
       method: "POST",
-      headers: {
+      headers: { //will get this from BE dev.  Headers are additonal rules for the browswer and/or server
         "Content-Type": "application/json",
-        "Authorization": `basic ${basicToken}`
+        "Authorization": `basic ${basicToken}` //API Key
       }
     })
     .then(response => response.json())

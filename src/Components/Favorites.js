@@ -1,35 +1,51 @@
-import React from 'react'
-import '../CSS/Movies.css'
+import React, { Component } from 'react'
+import '../CSS/Favorites.css'
 import MoviePoster from './MoviePoster'
-import { Link } from "react-router-dom"
 
+class Favorites extends Component {
+  constructor() {
+    super()
+    this.state = {
+      favorites: []
+    }
+  }
 
-const Movies = (props) => {
-  const movies = props.movies.filter(movie => movie.favorite )
-  const movieData = movies.map(movie => {
-    return (<MoviePoster
-    id={movie.id}
-    title={movie.title}
-    overview={movie.overview}
-    average={movie.vote_average}
-    votes={movie.vote_count}
-    releaseDate={movie.release_date}
-    posterImage={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-    key={movie.id}
-    />)
-  })
-	return (
-    <div className="movies">
-      {movieData.length ? movieData :
-      <div>
-        <h2>No Favorites</h2>
-        <Link to="/" type="button">
-          <button className="back-button">Back to Main</button>
-        </Link>
-      </div>
+  componentDidMount() {
+    // this.getStateFromSessionStorage();
+		fetch("https://foxc-movies-api.herokuapp.com/api/v1/favorites", {
+      headers: {
+        "Authorization": `Bearer ${sessionStorage.token}`
       }
-    </div>
-	)
+    })
+		.then(response => response.json())
+		.then(data => {
+			this.setState({favorites: data.favorites})
+		})
+  }
+    // this.state.favorites == ["76999", "12345"]
+    // filter through movies and only keep the movie if its id === any id in this.state.favorites.
+  favMovies = () => {
+    return this.state.favorites.map((movie) => {
+      return (<MoviePoster
+      id={movie.id}
+      title={movie.title}
+      overview={movie.overview}
+      average={movie.vote_average}
+      votes={movie.vote_count}
+      releaseDate={movie.release_date}
+      posterImage={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+      key={movie.id}
+      />)
+    })
+  }
+
+  render(){
+    return (
+     <div className="favorites">
+       {this.favMovies()}
+      </div>
+    )
+  }
 }
 
-export default Movies 
+export default Favorites 
