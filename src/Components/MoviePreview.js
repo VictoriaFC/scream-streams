@@ -108,14 +108,24 @@ class MoviePreview extends React.Component {
                 <p className="movie-info">Average: {vote_average * 10}%</p><br></br>
                 <h4 className="movie-tagline">{tagline}</h4><br></br>
 								<h2 className="overview-header">Overview:</h2>
-                <p className="movie-overview">{overview}</p>
+                <p className="movie-overview">{overview}</p><br></br>
                 {movie.favorite && <p className="movie-favorite"></p> }
-                <Link to="/" type="button">
-                  <button className="back-button">Back to Main 💀</button>
-                </Link>
-                {!this.state.movie.favorite ? <img src={NotFav} className="fav-img" onClick={(event) => this.postFavorite(event)}></img> :
+                {!this.state.movie.favorite ?
+								<div className="watch-list-container">
+									<h4>Add to WATCH LIST</h4>
+									<img src={NotFav} className="fav-img" onClick={(event) => this.postFavorite(event)}></img>
+								</div> 
+								:
+								<div className="watch-list-container">
+									<h4>ADDED!</h4>
                   <img src={favorite} className="fav-img" onClick={(event) => this.deleteFavorite(event)}></img>
+								</div>
                 } 
+                <Link to="/" type="button">
+									<div className="back-button-container">
+                  	<button className="back-button">Back to Main 💀</button>
+									</div>
+                </Link>
               </article>
             </div>
           </section>
