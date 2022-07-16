@@ -1,5 +1,6 @@
 import React from 'react'
 import '../CSS/Nav.css'
+// import logo from "../assets/logo.png"
 import { Link } from "react-router-dom"
 
 
@@ -7,6 +8,7 @@ const Nav = ({ userLogout }) => {
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
+				{/* <img className="logo" src={logo}/> */}
 				{!!sessionStorage.getItem("token") &&
 					<Link to="/Favorites" className="favorite-button">
 						<button className="button">Favorites</button>
