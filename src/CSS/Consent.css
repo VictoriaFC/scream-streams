@@ -1,6 +1,6 @@
 .consent-container {
 	padding-top: 70px;
-	border: 2px solid white;
+	/* border: 2px solid white; */
 	height: 1000px;
   color: white;
 	display: flex;
@@ -40,9 +40,26 @@ h3 {
 }
 
 .consent-button {
-	font-family: 'Barlow Condensed', sans-serif;
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Oswald', sans-serif;	
-	width: 100px;
-	height: 40px;
+  margin: 0.5em auto;
+	padding: 2.5px;
+	border-color: white;
+	border-radius: 5px;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'Berkshire Swash', cursive;
+	font-family: 'Inconsolata', monospace;
 } 
+
+.freddy-quote {
+  color: red;
+}
+
+.consent-button:hover {
+  transform: scale(1.1);
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔪</text></svg>")
+      16 0, auto;
+  color: red;
+  border-color: red;
+}
