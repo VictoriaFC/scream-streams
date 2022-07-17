@@ -1,3 +1,48 @@
 .consent-container {
+	padding-top: 70px;
+	border: 2px solid white;
+	height: 1000px;
   color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
+.consent-header {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Oswald', sans-serif;	
+	font-weight: bolder;
+}
+
+h3 {
+	font-style: italic;
+	font-weight: bolder;
+}
+.consent-message {
+	/* border: 2px solid gray; */
+	width: 500px;
+	height: 100px;
+}
+
+.consent-checkbox {
+	width: 30px;
+	height: 30px;
+}
+
+.consent-checkbox[type="checkbox"]:after {
+	background-color:red;
+	}
+
+.consent-logo {
+	width: 200px;
+	height: 200px;
+}
+
+.consent-button {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Oswald', sans-serif;	
+	width: 100px;
+	height: 40px;
+} 

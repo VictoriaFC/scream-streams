@@ -1,4 +1,4 @@
-.signup-container {
+.login-container {
 	color: white;
 	padding-top: 70px;
 	/* border: 2px solid white; */
@@ -8,18 +8,20 @@
 	align-items: center;
 	border-bottom: 2px solid gray;
 }
-.signup-header {
+
+.login-landing-img {
+	height: 200px;
+	/* padding-right: 65px; */
+}
+
+.login-header {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Oswald', sans-serif;	
 	font-size: 40px;
 }
 
-.signup-quote {
-	font-style: italic;
-}
-
-.signup-form {
+.login-form {
 	background-image:  url('../assets/loginform.webp');
 	border-radius: 5px;
 	width: 30%;
@@ -32,7 +34,7 @@
 	align-items: center;
 }
 
-.back-button-signup-page {
+.login-button {
 	background-color: white;
 	color: black;
 	margin: 1em auto;
@@ -46,14 +48,30 @@
 	text-transform: uppercase;
 }
 
-.back-button-signup-page {
+.login-button:hover {
 	border-radius: 4px;
 	transform: scale(1.1);
 	cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔪</text></svg>")
 	16 0, auto;
 }
 
-.signup-landing-img {
-	height: 200px;
+.back-button-login-page {
+	background-color: white;
+	color: black;
+	margin: 1em auto;
+	padding: 2.5px;
+	border: 1px solid black;
+	border-radius: 4px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'Berkshire Swash', cursive;
+	font-family: 'Inconsolata', monospace;
+	text-transform: uppercase;
 }
 
+.back-button-login-page:hover {
+	border-radius: 4px;
+	transform: scale(1.1);
+	cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔪</text></svg>")
+	16 0, auto;
+}

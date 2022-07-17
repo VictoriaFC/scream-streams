@@ -3,4 +3,17 @@
 	border: 2px solid black;
 	height: 200px;
 	color: white;
+	padding-bottom: 100px;
+}
+
+.footer-logo {
+	width: 200px;
+	height: 200px;
+}
+
+.footer-header {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Oswald', sans-serif;	
+	font-weight: lighter;
 }

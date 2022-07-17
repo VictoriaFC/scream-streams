@@ -2,22 +2,27 @@
 	display: flex;
 	background-color: rgb(31, 14, 14);
 	color: white;
-	height: 40px;
+	height: 50px;
+	display: flex;
+	align-items: center;
 }
 
 .nav-left {
-	/* border: 2px solid white; */
 	display: flex;
-	justify-content: space-around;
-	width: 18%;
+	align-items: center;
+	width: 50%;
+
 }
 
 .nav-right {
-	width: 80%;
-	/* border: 2px solid white; */
+	width: 50%;
 	display: flex;
 	justify-content: flex-end;
-	margin-right: 5px;
+}
+
+.nav-message {
+	width: 40%;
+	letter-spacing: 1.5px;
 }
 
 .dropdown {
@@ -26,39 +31,25 @@
 }
 
 .button {
+	font-family: 'Berkshire Swash', cursive;
+	font-family: 'Inconsolata', monospace;
+	font-size: larger;
 	background-color: rgb(31, 14, 14);
-	border: 2px solid rgb(31, 14, 14);
-	color: #B5AC99;
-}
-
-.login-button,
-.signup-button {
-	margin-right: 10px;
-	background-color: rgb(31, 14, 14);
-	border: 2px solid rgb(31, 14, 14);
-	color: #B5AC99;
+	background: none;
+	color: inherit;
+	border: none;
+	color: white;
+	margin: 5px;
+	padding: 10px;
+	height: 45px;
 	border-radius: 2px;
+	text-decoration: underline;
 }
 
-/* .button {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+.button:hover {
+	transform: scale(1.1);
+	color: red;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔪</text></svg>")
+      16 0, auto;
 }
 
-.button:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
-} */
