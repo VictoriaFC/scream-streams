@@ -1,4 +1,4 @@
-.favorites {
+.watch-list {
 	background-color: rgb(31, 14, 14);
 	color: #B5AC99;
   display: grid;
@@ -10,4 +10,5 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
+
 

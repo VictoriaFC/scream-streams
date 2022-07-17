@@ -41,7 +41,7 @@ class Favorites extends Component {
 
   render(){
     return (
-     <div className="favorites">
+     <div className="watch-list">
        {this.favMovies()}
       </div>
     )
