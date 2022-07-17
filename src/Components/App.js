@@ -66,8 +66,8 @@ class App extends Component {
   }
 
   userDidConsent = () => {
-    sessionStorage.setItem("isOfAge", true)
-    return this.setState({ isOfAge: true })
+    sessionStorage.setItem("isOfAge", !this.state.isOfAge)
+    return this.setState({ isOfAge: !this.state.isOfAge })
   }
 
   userLogout = (event) => {
@@ -102,7 +102,7 @@ class App extends Component {
   render(){
     return(
       <main className="App">
-				{!!sessionStorage.isOfAge && <Nav userLogout={this.userLogout}/>}
+				{sessionStorage.isOfAge === "true" && <Nav userLogout={this.userLogout}/>}
 				{this.state.error && <h3>{this.state.error}</h3>}
         {this.state.isLoading && <img className="loading-gif" src={loadingGif}/>}
         {sessionStorage.getItem("isOfAge") !== "true" && <Redirect to="/Consent" />}
