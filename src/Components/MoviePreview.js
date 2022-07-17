@@ -41,30 +41,34 @@ class MoviePreview extends React.Component {
 
   postFavorite = (event) => {
     event.preventDefault()
-    const url = 'https://foxc-movies-api.herokuapp.com/api/v1/favorites'
-    fetch(url, {
-			method: "POST",
-			headers: {
-				'Content-Type': 'application/json',
-        "Authorization": `Bearer ${sessionStorage.token}`
-			},
-			body: JSON.stringify({
-				favorite: {
-					movie_id: this.state.movie.id
-				}
-			})
-		})
-    .then(response => response.json())
-    .then(data => {
-      this.setState((prevState) => {
-        return {
-          movie: {
-            ...prevState.movie,
-            favorite: true
+    if(sessionStorage.token) {
+      const url = 'https://foxc-movies-api.herokuapp.com/api/v1/favorites'
+      fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${sessionStorage.token}`
+        },
+        body: JSON.stringify({
+          favorite: {
+            movie_id: this.state.movie.id
           }
-        }
+        })
       })
-    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState((prevState) => {
+          return {
+            movie: {
+              ...prevState.movie,
+              favorite: true
+            }
+          }
+        })
+      })
+    } else {
+      document.getElementById("notSignedInError").classList.remove("hidden")
+    }
   }
 
   deleteFavorite = (event) => {
@@ -113,14 +117,17 @@ class MoviePreview extends React.Component {
                 {!this.state.movie.favorite ?
 								<div className="watch-list-container">
 									<h4>Add to WATCH LIST</h4>
-									<img src={NotFav} className="fav-img" onClick={(event) => this.postFavorite(event)}></img>
-								</div> 
+									<img src={NotFav} className="fav-img" onClick={(event) => this.postFavorite(event)}></img><br />
+                  <div className="error-container">
+                    <p id="notSignedInError" className="not-signed-in-error hidden">You must sign in or sign up to use this feature.</p>
+                  </div>
+								</div>
 								:
 								<div className="watch-list-container">
 									<h4>ADDED!</h4>
                   <img src={favorite} className="fav-img" onClick={(event) => this.deleteFavorite(event)}></img>
 								</div>
-                } 
+                }
                 <Link to="/" type="button">
 									<div className="back-button-container">
                   	<button className="back-button">Back to Main 💀</button>

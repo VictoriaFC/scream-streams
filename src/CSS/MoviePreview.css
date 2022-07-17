@@ -119,3 +119,23 @@
 	cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔪</text></svg>")
 	16 0, auto;
 }
+
+.not-signed-in-error {
+  color: red;
+  font-weight: bold;
+  font-family: 'Berkshire Swash', cursive;
+	font-family: 'Inconsolata', monospace;
+  font-size: smaller;
+  letter-spacing: 1px;
+}
+
+.hidden {
+  display: none; 
+}
+
+.error-container {
+  height: 100px;
+  width: 500px;
+  display: flex;
+  margin-top: 20px;
+}
