@@ -3,20 +3,26 @@
 	background-color: rgb(31, 14, 14);
 	color: white;
 	height: 50px;
+	display: flex;
+	align-items: center;
 }
 
 .nav-left {
-	/* border: 2px solid white; */
 	display: flex;
 	align-items: center;
-	width: 18%;
+	width: 50%;
+
 }
 
 .nav-right {
-	width: 100%;
-	/* border: 2px solid white; */
+	width: 50%;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.nav-message {
+	width: 40%;
+	letter-spacing: 1.5px;
 }
 
 .dropdown {

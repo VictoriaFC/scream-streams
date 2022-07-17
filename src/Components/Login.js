@@ -2,7 +2,7 @@ import React from 'react'
 import '../CSS/Nav.css'
 import { Link } from "react-router-dom"
 import '../CSS/Login.css'
-import landingImage from '../assets/sinister.gif'
+import landingImage from '../assets/saw.gif'
 
 const Login = ({ userLogin }) => {
 	return (

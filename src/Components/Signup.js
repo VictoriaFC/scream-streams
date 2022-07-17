@@ -3,6 +3,7 @@ import '../CSS/Nav.css'
 import '../CSS/SignUp.css'
 import { Link } from "react-router-dom"
 import { Redirect } from 'react-router-dom'
+import landingImage from '../assets/sinister.gif'
 
 class Signup extends Component {
 	constructor() {
@@ -56,21 +57,23 @@ class Signup extends Component {
 		return (
 			<div className="signup-container">
 				{!!this.state.token && <Redirect to="/" />}
-				<h2>Signup</h2>
+				<img className="signup-landing-img" src={landingImage}/>
+				<p className="signup-quote" ></p>
+				<h2 className="signup-header">Create Account</h2>
 				<form className="signup-form" onSubmit={(event) => this.postUserInfo(event)}>
 					<label> Name:
-						<input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)} required/>
+						<br></br><input type="text" name="name" placeholder="name" onChange={(event) => this.createName(event)} required/>
 					</label>
 					<label> Email:
-						<input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)} required/>
+						<br></br><input type="text" name="email" placeholder="email" onChange={(event) => this.createEmail(event)} required/>
 					</label>
 					<label> Password:
-						<input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)} required/>
+						<br></br><input type="password" name="password" placeholder="password" onChange={(event) => this.createPassword(event)} required/>
 					</label>
 					<input type="submit" value="Create Account" />
 				</form>
 				<Link to="/" type="button">
-					<button className="back-button">Back to Main</button>
+					<button className="back-button-signup-page">Back to Main</button>
 				</Link>
 			</div>
 		)

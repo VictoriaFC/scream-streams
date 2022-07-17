@@ -1,16 +1,16 @@
 .login-container {
-	background-color: #0B0B0B;
 	color: white;
+	padding-top: 70px;
 	/* border: 2px solid white; */
-	height: 600px;
+	height: 1000px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	border-bottom: 2px solid gray;
 }
 
 .login-landing-img {
-	height: 40%;
+	height: 200px;
 	/* padding-right: 65px; */
 }
 
