@@ -12,10 +12,10 @@ const Login = ({ userLogin }) => {
 			<p>To see your WATCH LIST please login</p><br></br>
       <form className="login-form" onSubmit={(event) => this.postUserInfo(event)}>
 					<label> Email:
-						<br></br><input type="text" name="email" placeholder="email" id="email" required/>
+						<br></br><input type="text" name="email" placeholder="email" className="login-email" id="email" required/>
 					</label>
 					<label> Password:
-						<br></br><input type="password" name="password" placeholder="password" id="password" required/>
+						<br></br><input type="password" name="password" placeholder="password" className="login-password" id="password" required/>
 					</label>
 					<input className="login-button" type="submit" value="Login" onClick={(event) => userLogin(event)} />
 				</form>

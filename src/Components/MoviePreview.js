@@ -117,7 +117,7 @@ class MoviePreview extends React.Component {
                 {!this.state.movie.favorite ?
 								<div className="watch-list-container">
 									<h4>Add to WATCH LIST</h4>
-									<img src={NotFav} className="fav-img" onClick={(event) => this.postFavorite(event)}></img><br />
+									<img src={NotFav} className="not-fav-img" onClick={(event) => this.postFavorite(event)}></img><br />
                   <div className="error-container">
                     <p id="notSignedInError" className="not-signed-in-error hidden">You must sign in or sign up to use this feature.</p>
                   </div>
