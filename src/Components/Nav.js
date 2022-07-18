@@ -29,7 +29,7 @@ const Nav = ({ userLogout }) => {
 					</Link>
 			}
 			{!!sessionStorage.getItem("token") &&
-				<button className="button" onClick={(event) => userLogout(event)}>LOGOUT</button>
+				<button className="button nav-logout-button" onClick={(event) => userLogout(event)}>LOGOUT</button>
 			}
 			{!sessionStorage.getItem("token") &&
         <Link to="/SignUp">

@@ -35,6 +35,10 @@ describe("App Dashboard", () => {
     cy.get(".nav-signup-button").should("be.visible")
   })
 
+  it("should not have a logout button because user is not logged in", () => {
+    cy.get(".nav-logout-button").should("not.exist")
+  })
+
   it("should display in nav bar message for user to sign up or login to create a watch list!", () => {
     cy.get(".nav-message").contains("Sign up or Login to create a watch list!")
   })
