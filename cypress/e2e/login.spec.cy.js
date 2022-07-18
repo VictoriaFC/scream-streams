@@ -16,7 +16,7 @@ describe("App Dashboard", () => {
   })
 
 	it("should be able to login", () => {
-		cy.get(".login-email").type("vic@gmail.com")
+		cy.get("input").first().type("vic@gmail.com")
 		cy.get("input").last().type("Vic1")
 		cy.get(".login-button").click()
 	})
