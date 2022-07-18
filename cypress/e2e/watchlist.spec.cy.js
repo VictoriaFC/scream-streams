@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("App Dashboard", () => {
+describe("Watch List Dashboard", () => {
   before( () => {
     cy.visit("http://localhost:3000/")
     cy.get(".consent-checkbox").click()

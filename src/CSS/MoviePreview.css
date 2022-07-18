@@ -96,7 +96,8 @@
 	16 0, auto;
 }
 
-.fav-img {
+.fav-img, 
+.not-fav-img {
   height: 50px;
   width: 50px;
 }
