@@ -8,10 +8,15 @@ describe("App Dashboard", () => {
     cy.url().should('eq', "http://localhost:3000/")
   })
 
+  afterEach( () => {
+    cy.visit("http://localhost:3000/")
+    window.sessionStorage.removeItem("isOfAge")
+  })
+
   it("should load header with welcome message with creepy quote below it", () => {
+    cy.get(".header-container")
     cy.contains("WELCOME TO SCREAM STREAMS")
     cy.contains("Walls have ears. Doors have eyes. Trees have voices. Beasts tell lies. Beware the rain. Beware the snow. Beware the man you think you know.")
-    cy.get(".header-container")
   })
 
   it("should have a movies container with movie articles", () => {
