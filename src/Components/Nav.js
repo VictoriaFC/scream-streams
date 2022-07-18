@@ -7,13 +7,13 @@ const Nav = ({ userLogout }) => {
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
-				<NavLink to="/">
-					<button className="button">HOME</button>
-				</NavLink>
+				<Link to="/">
+					<button className="button nav-home-button">HOME</button>
+				</Link>
 				
 				{!!sessionStorage.getItem("token") &&
 					<Link to="/Favorites" className="favorite-button">
-						<button className="button">WATCH LIST</button>
+						<button className="button nav-watchlist-button">WATCH LIST</button>
 					</Link>
 				}
 			</div>
@@ -25,15 +25,15 @@ const Nav = ({ userLogout }) => {
 			<div className="nav-right">
 			{!sessionStorage.getItem("token") &&
 					<Link to="/Login">
-						<button className="button">LOGIN</button>
+						<button className="button nav-login-button">LOGIN</button>
 					</Link>
 			}
 			{!!sessionStorage.getItem("token") &&
-				<button className="button" onClick={(event) => userLogout(event)}>LOGOUT</button>
+				<button className="button nav-logout-button" onClick={(event) => userLogout(event)}>LOGOUT</button>
 			}
 			{!sessionStorage.getItem("token") &&
         <Link to="/SignUp">
-				  <button className="button">SIGN UP</button>
+				  <button className="button nav-signup-button">SIGN UP</button>
         </Link>
 			}
 			</div>

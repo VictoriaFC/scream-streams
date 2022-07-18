@@ -29,7 +29,7 @@ const Consent = ({ consent }) => {
       {checked && 
       <>
         <Link to="/" className="consent-button">
-          <br></br><input className="consent-button" type="submit" name="consent" value="ENTER 💀"/>
+          <br></br><input className="consent-button-1" type="submit" name="consent" value="ENTER 💀"/>
         </Link>
         <p className="freddy-quote">"1...2...Freddy's coming for you..."</p>
       
