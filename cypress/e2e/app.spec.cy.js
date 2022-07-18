@@ -1,15 +1,12 @@
 /// <reference types="cypress" />
 
 describe("App Dashboard", () => {
-  
   beforeEach( () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("http://localhost:3000/")
+    cy.get(".consent-checkbox").click()
+    cy.get(".consent-button").click()
+    cy.url().should('eq', "http://localhost:3000/")
   })
-
-  // it("should have a favorites button", () => {
-  //   cy.get(".favorite-button")
-  //   .contains("Favorites")
-  // })
 
   it("should load header with welcome message with creepy quote below it", () => {
     cy.contains("WELCOME TO SCREAM STREAMS")
@@ -21,12 +18,12 @@ describe("App Dashboard", () => {
     cy.get(".movies-container")
     cy.get(".movie-poster")
       .should("be.visible")
-      .get("h3").should("have.class", "movie-title")
-      .get("p").should("have.class", "movie-rating")
+      .get("h3").should("have.class", "movie-title-main")
+      .get("p").should("have.class", "movie-rating-main")
   })
 
   it("should be able to click movie poster and open movie preview page", () => {
-    cy.get(".image").first().should("have.attr", "alt", "Shark Bait").click()
+    cy.get(".movie-poster-image").first().should("have.attr", "alt", "The Black Phone").click()
     .url().should("include", "/MoviePreview")
   })
 })
