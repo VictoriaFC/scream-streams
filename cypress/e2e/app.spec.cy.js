@@ -61,4 +61,20 @@ describe("App Dashboard", () => {
     cy.get(".movie-poster-image").first().should("have.attr", "alt", "The Black Phone").click()
     .url().should("include", "/MoviePreview")
   })
+
+	it("should be able to click ", () => {
+    cy.get(".movie-poster-image").first().should("have.attr", "alt", "The Black Phone").click()
+    .url().should("include", "/MoviePreview")
+  })
+
+	// it("should have a footer with clickable links to creators github", () => {
+  //   cy.get(".trish-github").click()
+	// 	cy.url().should("contain", "/tfoxcollis")
+	// 	cy.go('back')
+	// 	cy.get(".vic-github").click()
+	// 	cy.url().should("eq", "https://github.com/VictoriaFC")
+  // })
+	// it("should have a footer with clickable links to creators linkedin", () => {
+  //   cy.get(")
+  // })
 })

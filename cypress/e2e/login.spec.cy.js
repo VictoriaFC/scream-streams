@@ -7,6 +7,7 @@ describe("App Dashboard", () => {
     cy.get(".consent-button").click()
     cy.url().should("eq", "http://localhost:3000/")
 		cy.get(".nav-login-button").click()
+		cy.url().should("eq", "http://localhost:3000/Login")
 		cy.get(".login-form").should("be.visible")
   })
 
