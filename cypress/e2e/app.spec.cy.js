@@ -19,6 +19,32 @@ describe("App Dashboard", () => {
     cy.contains("Walls have ears. Doors have eyes. Trees have voices. Beasts tell lies. Beware the rain. Beware the snow. Beware the man you think you know.")
   })
 
+  it("should have a nav bar that shows a home button in top left corner", () => {
+    cy.get(".nav-home-button").should("be.visible")
+  })
+  
+  it("should not have a watch list button because user is not logged in", () => {
+    cy.get(".nav-watch-list").should("not.exist")
+  })
+
+  it("should have a nav bar that shows a login button in top right corner", () => {
+    cy.get(".nav-login-button").should("be.visible")
+  })
+
+  it("should have a nav bar that shows a signup button in top right corner", () => {
+    cy.get(".nav-signup-button").should("be.visible")
+  })
+
+  it("should display in nav bar message for user to sign up or login to create a watch list!", () => {
+    cy.get(".nav-message").contains("Sign up or Login to create a watch list!")
+  })
+
+  
+  it("should have 50 movie posters displayed", () => {
+      cy.get(".movies-container").children().should("have.length",49)
+    })
+    
+  
   it("should have a movies container with movie articles", () => {
     cy.get(".movies-container")
     cy.get(".movie-poster")
