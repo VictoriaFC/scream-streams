@@ -18,11 +18,12 @@ https://scream-streams.herokuapp.com/
 
 ## Technologies Used
 
-React
-Javascript
-Cypress
-CSS
-HTML / JSX
+- React
+- Javascript
+- Cypress
+- CSS
+- HTML / JSX
+- Heroku
 
 ## Future Ideas 
 
@@ -30,6 +31,10 @@ HTML / JSX
 - Add links to sites where you can watch the movie 
 - Give users the ability to leave a review
 - Create a games tab that takes you to simple but spooky games!
+
+## Reflection
+
+- This project was a fun way to practice React, Cypress, OOP, Modular programming, fetch, Github, Git workflow, CSS and team collaboration.  Pre-planning and mapping out what we wanted to achieve was instrumental in finishing this project on time.  Although we started out with a goal to work on atomic commits, we found that this is still an area of opportunity for us.  A success we had was creating functionality for login, logout, and sign up.  We both learned more about the backend by creating an API contract to connect to an API that allowed us to personalize our page to be only Horror movies.  Overall this project was extremely fun and also challenged us to think outside the box.
 
 ## Creators
 
