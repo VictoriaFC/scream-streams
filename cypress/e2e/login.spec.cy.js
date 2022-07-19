@@ -3,12 +3,14 @@
 describe("Login Dashboard", () => {
   before( () => {
     cy.visit("http://localhost:3000/")
+    cy.wait(2000)
     cy.get(".consent-checkbox").click()
     cy.get(".consent-button").click()
     cy.url().should("eq", "http://localhost:3000/")
 		cy.get(".nav-login-button").click()
 		cy.url().should("eq", "http://localhost:3000/Login")
 		cy.get(".login-form").should("be.visible")
+    cy.wait(2000)
   })
 
 	after( () => {
@@ -26,4 +28,33 @@ describe("Login Dashboard", () => {
 		cy.get(".back-button-login-page").click()
 		cy.url().should("eq", "http://localhost:3000/")
 	})
+})
+
+describe("Sad path-Login Dashboard", () => {
+  before( () => {
+    cy.visit("http://localhost:3000/")
+    cy.wait(2000)
+    cy.get(".consent-checkbox").click()
+    cy.get(".consent-button").click()
+    cy.url().should("eq", "http://localhost:3000/")
+		cy.get(".nav-login-button").click()
+		cy.url().should("eq", "http://localhost:3000/Login")
+		cy.get(".login-form").should("be.visible")
+    cy.wait(2000)
+  })
+
+  after( () => {
+    cy.visit("http://localhost:3000/")
+    window.sessionStorage.removeItem("isOfAge")
+  })
+
+  it("should display an alert if login info is incorrect", () => {
+    cy.get("input").first().type("Chloe123@gmail.com")
+    cy.get("input").last().type("Hello")
+    cy.get(".login-button").click()
+    cy.wait(2000)
+    cy.on("window:alert", (string) => {
+      expect(string).to.equal("Something went wrong")
+    })
+  })
 })
