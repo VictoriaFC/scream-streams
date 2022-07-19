@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "../CSS/Consent.css"
-import logo from '../assets/logo.png'
 import landingImage from '../assets/eye.gif'
-
 
 const Consent = ({ consent }) => {
 
