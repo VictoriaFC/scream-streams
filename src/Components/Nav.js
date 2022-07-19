@@ -1,7 +1,6 @@
 import React from 'react'
 import '../CSS/Nav.css'
 import { Link } from "react-router-dom"
-import { NavLink } from "react-router-dom"
 
 const Nav = ({ userLogout }) => {
 	return (
@@ -10,7 +9,6 @@ const Nav = ({ userLogout }) => {
 				<Link to="/">
 					<button className="button nav-home-button">HOME</button>
 				</Link>
-				
 				{!!sessionStorage.getItem("token") &&
 					<Link to="/Favorites" className="favorite-button">
 						<button className="button nav-watchlist-button">WATCH LIST</button>

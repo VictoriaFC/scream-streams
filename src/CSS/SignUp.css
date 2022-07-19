@@ -1,13 +1,13 @@
 .signup-container {
 	color: white;
 	padding-top: 70px;
-	/* border: 2px solid white; */
 	height: 1000px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border-bottom: 2px solid gray;
 }
+
 .signup-header {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-family: 'Open Sans', sans-serif;
@@ -56,4 +56,3 @@
 .signup-landing-img {
 	height: 200px;
 }
-

@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import { encode } from 'base-64'
 
-
 // styling components
 import Nav from './Nav'
 import Header from './Header'
@@ -19,7 +18,6 @@ import Login from './Login'
 import Favorites from './Favorites'
 import Signup from './Signup'
 
-
 class App extends Component {
 	constructor() {
 		super()
@@ -32,7 +30,7 @@ class App extends Component {
 			token: ""
 		}
 	}
-//session storage is unique to the tab- it is cleared when you close the tab.  Session data isnt shared between tabs.
+
 	getStateFromSessionStorage() {
 		let token = sessionStorage.getItem("token")
 		let email = sessionStorage.getItem("email")
@@ -81,13 +79,13 @@ class App extends Component {
     event.preventDefault()
     let email = event.target.parentElement.querySelector("#email").value
     let password = event.target.parentElement.querySelector("#password").value
-    let token = `${email}:${password}` // sends info to backend to be verified
-    let basicToken = encode(token) // base 64 encrypted string for security
+    let token = `${email}:${password}`
+    let basicToken = encode(token)
     fetch('https://foxc-movies-api.herokuapp.com/api/v1/api-keys', {
       method: "POST",
-      headers: { //will get this from BE dev.  Headers are additonal rules for the browswer and/or server
+      headers: { 
         "Content-Type": "application/json",
-        "Authorization": `basic ${basicToken}` //API Key
+        "Authorization": `basic ${basicToken}`
       }
     })
     .then(response => response.json())

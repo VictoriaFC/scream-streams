@@ -25,7 +25,6 @@
 	rgba(199.5, 220.5, 220.5, .75) 150px, rgba(199.5, 220.5, 220.5, 0.75) 100%);
 }
 
-
 .display-left {
 	width: 30%;
 }
@@ -37,7 +36,6 @@
 	flex-direction: column;
 	align-items: flex-start;
 	margin-top: 80px;
-	/* border: 2px solid pink; */
 }
 
 .movie-title {
@@ -103,7 +101,6 @@
 }
 
 .watch-list-container {
-	/* border: 2px solid white; */
 	width: 129px;
 	height: 260px;
 	font-family: 'Barlow Condensed', sans-serif;

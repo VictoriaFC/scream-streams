@@ -1,7 +1,6 @@
 .login-container {
 	color: white;
 	padding-top: 70px;
-	/* border: 2px solid white; */
 	height: 1000px;
 	display: flex;
 	flex-direction: column;
@@ -11,7 +10,7 @@
 
 .login-landing-img {
 	height: 200px;
-	/* padding-right: 65px; */
+
 }
 
 .login-header {

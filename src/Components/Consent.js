@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "../CSS/Consent.css"
-import logo from '../assets/logo.png'
 import landingImage from '../assets/eye.gif'
-
 
 const Consent = ({ consent }) => {
 
@@ -25,7 +23,6 @@ const Consent = ({ consent }) => {
 				By checking the box below you are confirming you are at least 17 years old AND 
 				that Scream Streams is not liable for your NIGHTMARES.</h4>
 			<input className="consent-checkbox" type="checkbox" onChange={() => updateCheckbox()}/>
-      {console.log(checked)}
       {checked && 
       <>
         <Link to="/" className="consent-button">
