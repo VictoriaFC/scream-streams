@@ -52,7 +52,6 @@ describe("Sad path-Sign Up Dashboard", () => {
   })
 
   it("should display error message if input left blank", () => {
-    // cy.get(".signup-name").type("Bob")
 		cy.get(".signup-email").type("bob@gmail.com")
 		cy.get(".signup-password").type("Bob1")
 		cy.get(".create-account-button").click()
