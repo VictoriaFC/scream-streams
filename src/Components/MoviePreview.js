@@ -6,8 +6,6 @@ import loadingGif from '../assets/loading.gif'
 import NotFav from '../assets/NotFav.png'
 import favorite from '../assets/favorite.png'
 
-
-
 class MoviePreview extends React.Component {
   constructor() {
     super()
@@ -20,7 +18,6 @@ class MoviePreview extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.movie_id;
     if(sessionStorage.token) {
-      // Get back full movie object with the extra api attribute that allows user to "favorite": true/false
       fetch(`https://foxc-movies-api.herokuapp.com/api/v1/favorites/${id}`, {
         headers: {
           "Authorization": `Bearer ${sessionStorage.token}`
@@ -30,7 +27,7 @@ class MoviePreview extends React.Component {
       .then(data => {
         this.setState({movie: data, isLoading: false})
       })
-    } else { //if not logged in will fetch this
+    } else {
       fetch(`https://foxc-movies-api.herokuapp.com/api/v1/movies/${id}`)
         .then(response => response.json())
         .then(data => {
@@ -137,7 +134,6 @@ class MoviePreview extends React.Component {
             </div>
           </section>
         }
-
       </div>
     )
   }

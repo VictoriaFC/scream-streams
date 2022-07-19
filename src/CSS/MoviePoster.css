@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .movie-title-main {
 	position: relative;
 	top: -20px;
@@ -40,8 +41,4 @@
 	justify-content: center;
 	align-items: center;
 	text-decoration: underline;
-	/* font-family: 'Barlow Condensed', sans-serif;
-	font-family: 'Open Sans', sans-serif;
-	font-family: 'Oswald', sans-serif;	
-	font-weight: lighter; */
 }

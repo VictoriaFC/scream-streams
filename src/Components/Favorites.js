@@ -11,7 +11,6 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    // this.getStateFromSessionStorage();
 		fetch("https://foxc-movies-api.herokuapp.com/api/v1/favorites", {
       headers: {
         "Authorization": `Bearer ${sessionStorage.token}`
@@ -22,8 +21,7 @@ class Favorites extends Component {
 			this.setState({favorites: data.favorites})
 		})
   }
-    // this.state.favorites == ["76999", "12345"]
-    // filter through movies and only keep the movie if its id === any id in this.state.favorites.
+    
   favMovies = () => {
     return this.state.favorites.map((movie) => {
       return (<MoviePoster
