@@ -52,8 +52,8 @@ class App extends Component {
 		}
 	}
 	
-  componentDidMount(){ 
-		this.getStateFromSessionStorage(); // Looking to see if someone is signed in
+  componentDidMount(){
+		this.getStateFromSessionStorage();
 		fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies")
 		.then(response => response.json())
 		.then(data => {
@@ -82,7 +82,7 @@ class App extends Component {
     let password = event.target.parentElement.querySelector("#password").value
     let token = `${email}:${password}`
     let basicToken = encode(token)
-    fetch('https://foxc-movies-api.herokuapp.com/api/v1/api-keys', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/api-keys`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
