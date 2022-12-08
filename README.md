@@ -10,7 +10,7 @@ An app designed for scary movie lovers! You can browse our site to see scary mov
 4. Run npm start
 
 ## OR explore via Heroku
-https://scream-streams.herokuapp.com/
+https://scream-streams-delta.vercel.app/Consent
 
 ## See it in Action!
 ![ScreamStreams_1](https://user-images.githubusercontent.com/98445902/179438862-ba17d934-0610-492b-a669-e8f1420fac25.gif)
