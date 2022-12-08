@@ -54,7 +54,7 @@ class App extends Component {
 	
   componentDidMount(){
 		this.getStateFromSessionStorage();
-		fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies")
+		fetch(`${process.env.REACT_APP_API_URL}/api/v1/movies`)
 		.then(response => response.json())
 		.then(data => {
 			this.setState({movies: data.results, isLoading: false,})
