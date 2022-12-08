@@ -11,7 +11,7 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-		fetch("https://foxc-movies-api.herokuapp.com/api/v1/favorites", {
+		fetch(`${process.env.REACT_APP_API_URL}/api/v1/favorites`, {
       headers: {
         "Authorization": `Bearer ${sessionStorage.token}`
       }

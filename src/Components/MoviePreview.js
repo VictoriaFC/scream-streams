@@ -18,7 +18,7 @@ class MoviePreview extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.movie_id;
     if(sessionStorage.token) {
-      fetch(`https://foxc-movies-api.herokuapp.com/api/v1/favorites/${id}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/favorites/${id}`, {
         headers: {
           "Authorization": `Bearer ${sessionStorage.token}`
         }
@@ -28,7 +28,7 @@ class MoviePreview extends React.Component {
         this.setState({movie: data, isLoading: false})
       })
     } else {
-      fetch(`https://foxc-movies-api.herokuapp.com/api/v1/movies/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/v1/movies/${id}`)
         .then(response => response.json())
         .then(data => {
           this.setState({movie: data, isLoading: false})
@@ -39,7 +39,7 @@ class MoviePreview extends React.Component {
   postFavorite = (event) => {
     event.preventDefault()
     if(sessionStorage.token) {
-      const url = 'https://foxc-movies-api.herokuapp.com/api/v1/favorites'
+      const url = `${process.env.REACT_APP_API_URL}/api/v1/favorites`
       fetch(url, {
         method: "POST",
         headers: {
@@ -70,7 +70,7 @@ class MoviePreview extends React.Component {
 
   deleteFavorite = (event) => {
     event.preventDefault()
-    const url = `https://foxc-movies-api.herokuapp.com/api/v1/favorites/${this.state.movie.id}`
+    const url = `${process.env.REACT_APP_API_URL}/api/v1/favorites/${this.state.movie.id}`
     fetch(url, {
 			method: "DELETE",
 			headers: {

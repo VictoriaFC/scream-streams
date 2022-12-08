@@ -18,7 +18,7 @@ class Signup extends Component {
 
 	postUserInfo = (event) => {
 		event.preventDefault()	
-		const url = 'https://foxc-movies-api.herokuapp.com/api/v1/users'
+		const url = `${process.env.REACT_APP_API_URL}/api/v1/users`
 		fetch(url, {
 			method: "POST",
 			headers: {
