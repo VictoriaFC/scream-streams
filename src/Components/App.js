@@ -23,7 +23,7 @@ class App extends Component {
 		super()
 		this.state = {
 			movies: [],
-			innerWidth: window.innerWidth, 
+			innerWidth: window.innerWidth, //?
 			error: '',
       isLoading: true,
       isOfAge: false, 
@@ -31,11 +31,12 @@ class App extends Component {
 		}
 	}
 
-	getStateFromSessionStorage() {
-		let token = sessionStorage.getItem("token")
+	getStateFromSessionStorage() { //stores session for the tab you are on / browser hard drive. 
+		//Used over local storage bc storage didn't expire. So if you closed the tab and open another it wouldn't reset the token to false.
+		let token = sessionStorage.getItem("token") // part of session storage
 		let email = sessionStorage.getItem("email")
 		let firstName = sessionStorage.getItem("name")
-		if(token) {
+		if(token) { //token is how they are hitting the API
 			this.setState({
 				token: token,
 				email: email,
@@ -45,14 +46,14 @@ class App extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) { // Updates state if token does not match - only does it once
 		if(prevState.token !== this.state.token) {
 			this.getStateFromSessionStorage()
 		}
 	}
 	
-  componentDidMount(){
-		this.getStateFromSessionStorage();
+  componentDidMount(){ 
+		this.getStateFromSessionStorage(); // Looking to see if someone is signed in
 		fetch("https://foxc-movies-api.herokuapp.com/api/v1/movies")
 		.then(response => response.json())
 		.then(data => {
@@ -63,8 +64,8 @@ class App extends Component {
 		})
   }
 
-  userDidConsent = () => {
-    sessionStorage.setItem("isOfAge", !this.state.isOfAge)
+  userDidConsent = () => { // why isn't this under login page?
+    sessionStorage.setItem("isOfAge", !this.state.isOfAge) //?
     return this.setState({ isOfAge: !this.state.isOfAge })
   }
 
@@ -110,7 +111,7 @@ class App extends Component {
             <Movies movies={this.state.movies} />
           </Route>
           <Route exact path="/Consent">
-            <Consent consent={this.userDidConsent}/>
+            <Consent consent={this.userDidConsent}/> 
           </Route>
           <Route exact path="/Login">
             {!!this.state.token ? <Redirect to="/" /> :
@@ -118,7 +119,7 @@ class App extends Component {
             }
           </Route>
           <Route exact path="/Signup">
-            <Signup consent={this.userDidConsent}/>
+            <Signup consent={this.userDidConsent}/> 
           </Route>
           <Route exact path="/Favorites">
             <Favorites movies={this.state.movies} />

@@ -48,7 +48,7 @@ class MoviePreview extends React.Component {
         },
         body: JSON.stringify({
           favorite: {
-            movie_id: this.state.movie.id
+            movie_id: this.state.movie.id 
           }
         })
       })

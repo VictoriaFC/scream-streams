@@ -5,11 +5,11 @@ import landingImage from '../assets/eye.gif'
 
 const Consent = ({ consent }) => {
 
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false) // initial value of state is false
 
   const updateCheckbox = () => {
 
-    setChecked(!checked)
+    setChecked(!checked) // setting state, toggles from false to true
     consent()
   }
 
